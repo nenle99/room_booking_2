@@ -1,6 +1,7 @@
 
 <script>
-  import '$lib/styles.css'; // wenn du es in src/lib/styles.css speicherst
+  // Wenn styles.css in src/lib/styles.css liegt:
+  import '$lib/styles.css';
 </script>
 
 <slot />
@@ -11,9 +12,5 @@
 		background-color: #121212;
 		color: #f0f0f0;
 		font-family: system-ui, sans-serif;
-	}
-	a {
-		color: #61dafb;
-		text-decoration: none;
 	}
 </style>
