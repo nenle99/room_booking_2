@@ -1,22 +1,30 @@
+# Node.js
 node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Output
-.output
-.vercel
-.netlify
-/.svelte-kit
+# Build output
+.svelte-kit
 /build
+.output
+.netlify
+.vercel
 
-# OS
+# System files
 .DS_Store
 Thumbs.db
 
-# Env
+# Env files
 .env
-.env.*
+.env.*             # ignoriert alle außer .env.example etc.
 !.env.example
 !.env.test
 
-# Vite
+# Vite temp
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# VS Code settings (optional)
+.vscode
