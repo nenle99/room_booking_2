@@ -1,11 +1,3 @@
-
-<script>
-  // Wenn styles.css in src/lib/styles.css liegt:
-  import '$lib/styles.css';
-</script>
-
-<slot />
-
 <style>
 	:global(body) {
 		margin: 0;

@@ -8,9 +8,11 @@ const db = client.db('roombooking');
 
 // ===== ROOMS =====
 
+// Lädt alle Räume aus der Datenbank und gibt sie als Array zurück
 export async function getRooms() {
 	try {
 		const rooms = await db.collection('rooms').find({}).toArray();
+		// Konvertiert die MongoDB ObjectId in einen String für die weitere Verwendung
 		rooms.forEach((room) => (room._id = room._id.toString()));
 		return rooms;
 	} catch (error) {
@@ -19,6 +21,7 @@ export async function getRooms() {
 	}
 }
 
+// Lädt einen einzelnen Raum basierend auf der übergebenen ID
 export async function getRoom(id) {
 	try {
 		const room = await db.collection('rooms').findOne({ _id: new ObjectId(id) });
@@ -30,6 +33,7 @@ export async function getRoom(id) {
 	}
 }
 
+// Fügt einen neuen Raum in die Datenbank ein und gibt dessen ID zurück
 export async function createRoom(room) {
 	try {
 		const result = await db.collection('rooms').insertOne(room);
@@ -42,6 +46,7 @@ export async function createRoom(room) {
 
 // ===== BOOKINGS =====
 
+// Erstellt eine neue Buchung und gibt deren ID zurück
 export async function createBooking(booking) {
 	try {
 		const result = await db.collection('bookings').insertOne(booking);
@@ -52,9 +57,11 @@ export async function createBooking(booking) {
 	}
 }
 
+// Lädt alle Buchungen aus der Datenbank
 export async function getBookings() {
 	try {
 		const bookings = await db.collection('bookings').find({}).toArray();
+		// Konvertiert die MongoDB ObjectId in einen String für die weitere Verwendung
 		bookings.forEach((b) => (b._id = b._id.toString()));
 		return bookings;
 	} catch (error) {
@@ -63,6 +70,7 @@ export async function getBookings() {
 	}
 }
 
+// Lädt alle Buchungen für einen bestimmten Raum anhand der Raum-ID
 export async function getBookingsByRoom(roomId) {
 	try {
 		const bookings = await db
@@ -77,6 +85,7 @@ export async function getBookingsByRoom(roomId) {
 	}
 }
 
+// Lädt alle Buchungen, die von einem bestimmten Benutzer gemacht wurden
 export async function getBookingsByUser(userName) {
 	try {
 		const bookings = await db
@@ -91,10 +100,11 @@ export async function getBookingsByUser(userName) {
 	}
 }
 
-
+// Löscht eine Buchung anhand ihrer ID aus der Datenbank
 export async function deleteBooking(id) {
 	try {
 		console.log('Buchung löschen mit ID:', id);
+		// Wandelt die ID in eine MongoDB ObjectId um
 		const objectId = new ObjectId(id);
 		console.log('Erzeugtes ObjectId:', objectId);
 		const result = await db.collection('bookings').deleteOne({ _id: objectId });
