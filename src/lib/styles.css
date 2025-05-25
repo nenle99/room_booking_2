@@ -1,0 +1,14 @@
+body {
+	background-color: #111;
+	color: white;
+	font-family: system-ui, sans-serif;
+	margin: 0;
+}
+
+input, select, textarea {
+	background: #222;
+	color: white;
+	border: 1px solid #444;
+	padding: 0.5rem;
+	border-radius: 4px;
+}

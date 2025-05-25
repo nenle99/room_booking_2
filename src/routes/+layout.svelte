@@ -1,6 +1,6 @@
 
 <script>
-  import "../styles.css";
+  import '$lib/styles.css'; // wenn du es in src/lib/styles.css speicherst
 </script>
 
 <slot />
