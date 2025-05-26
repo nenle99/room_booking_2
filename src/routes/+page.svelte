@@ -36,12 +36,6 @@
 </div>
 
 <style>
-	:global(body) {
-		margin: 0;
-		background-color: #121212;
-		color: #f0f0f0;
-		font-family: system-ui, sans-serif;
-	}
 
 	.wrapper {
 		display: flex;
@@ -51,7 +45,7 @@
 	}
 
 	.form-container {
-		background-color: #1e1e1e;
+		background-color: #181818;
 		padding: 2rem;
 		border-radius: 10px;
 		box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
@@ -79,6 +73,7 @@
 		display: flex;
 		flex-direction: column;
 		font-weight: bold;
+		color: #ffffff;
 	}
 
 	input {
@@ -87,7 +82,7 @@
 		border: none;
 		border-radius: 5px;
 		background-color: #2a2a2a;
-		color: #fff;
+		color: #ffffff;
 	}
 
 	input:focus {

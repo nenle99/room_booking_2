@@ -63,7 +63,7 @@
 		<form on:submit={handleSubmit}>
 			<label>
 				Datum:
-				<input type="date" bind:value={bookingDate} required />
+				<input type="date" bind:value={bookingDate} min={new Date().toISOString().split('T')[0]} required />
 			</label>
 
 			<label>

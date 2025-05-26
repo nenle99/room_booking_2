@@ -70,7 +70,7 @@
 							<strong>{b.room.name}</strong>
 							({b.room.location}, {b.room.capacity} Personen)
 
-							<form method="POST" action="/api/bookings/delete" use:enhance={enhanceDeleteBooking} style="display:inline;">
+							<form method="POST" action="/api/bookings/delete" style="display:inline;">
 	            <input type="hidden" name="booking_id" value={b._id} />
 	            <button type="submit" class="delete-button">Löschen</button>
               </form>
@@ -119,13 +119,6 @@
 		align-items: center;
 		margin-bottom: 1rem;
 	}
-
-	/* .grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-		gap: 1rem;
-		margin-top: 1.5rem;
-	} */
 
 	.room-card {
 		display: block;
