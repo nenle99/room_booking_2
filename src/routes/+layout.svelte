@@ -2,7 +2,10 @@
 
 </script>
 
-<slot />
+
+<main>
+  <slot />
+</main>
 
 <style lang="css">
   :global(html),:global(body) {
@@ -11,4 +14,6 @@
     color: #ffffff;
     font-family: system-ui, sans-serif;
   }
+
+  
 </style>
