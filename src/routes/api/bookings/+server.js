@@ -13,11 +13,6 @@ export async function POST({ request }) {
 		end: formData.get('end')
 	};
 
-	try {
-		const bookingId = await db.createBooking(booking);
-		return json({ success: true, booking_id: bookingId });
-	} catch (error) {
-		console.error('Fehler beim Speichern:', error.message);
-		return json({ success: false }, { status: 500 });
-	}
+	const bookingId = await db.createBooking(booking);
+	return json({ success: true, booking_id: bookingId });
 }

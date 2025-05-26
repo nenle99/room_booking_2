@@ -7,12 +7,12 @@
 	let startTime = '';
 	let endTime = '';
 
-	// Wandelt Raumnamen in bildfreundliche Dateinamen um
+	// Wandelt Raumnamen um
 	function slugify(name) {
 		return name
 			.toLowerCase()
-			.replace(/\s+/g, '-')        // Leerzeichen → Bindestriche
-			.replace(/[^a-z0-9\-]/g, ''); // Sonderzeichen entfernen
+			.replace(/\s+/g, '-')        
+			.replace(/[^a-z0-9\-]/g, ''); 
 	}
 
 	const imageName = slugify(data.room.name) + '.jpg';

@@ -24,7 +24,7 @@
 	}
 
 
-	// Buchungen des Nutzers mit Raum-Details
+	// Buchungen des Nutzers mit Raumdetails
 	$: myBookings = data.bookings
 		.filter(b => b.user_name === $user.name)
 		.map(b => {

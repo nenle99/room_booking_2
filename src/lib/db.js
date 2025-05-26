@@ -6,12 +6,13 @@ await client.connect();
 
 const db = client.db('roombooking');
 
-// ===== ROOMS =====
 
 // Lädt alle Räume aus der Datenbank und gibt sie als Array zurück
 export async function getRooms() {
 	try {
 		const rooms = await db.collection('rooms').find({}).toArray();
+
+
 		// Konvertiert die MongoDB ObjectId in einen String für die weitere Verwendung
 		rooms.forEach((room) => (room._id = room._id.toString()));
 		return rooms;
@@ -33,18 +34,6 @@ export async function getRoom(id) {
 	}
 }
 
-// Fügt einen neuen Raum in die Datenbank ein und gibt dessen ID zurück
-export async function createRoom(room) {
-	try {
-		const result = await db.collection('rooms').insertOne(room);
-		return result.insertedId.toString();
-	} catch (error) {
-		console.error('Fehler beim Erstellen eines Raums:', error.message);
-		return null;
-	}
-}
-
-// ===== BOOKINGS =====
 
 // Erstellt eine neue Buchung und gibt deren ID zurück
 export async function createBooking(booking) {
@@ -61,6 +50,8 @@ export async function createBooking(booking) {
 export async function getBookings() {
 	try {
 		const bookings = await db.collection('bookings').find({}).toArray();
+
+		
 		// Konvertiert die MongoDB ObjectId in einen String für die weitere Verwendung
 		bookings.forEach((b) => (b._id = b._id.toString()));
 		return bookings;
@@ -115,12 +106,10 @@ export async function deleteBooking(id) {
 	}
 }
 
-// ===== EXPORTS =====
 
 export default {
 	getRooms,
 	getRoom,
-	createRoom,
 	getBookings,
 	getBookingsByRoom,
 	getBookingsByUser,
