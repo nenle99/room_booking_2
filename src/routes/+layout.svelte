@@ -4,10 +4,10 @@
 
 
 <main>
-  <slot />
+  <slot/>
 </main>
 
-<style lang="css">
+<style>
   :global(html),:global(body) {
     margin: 0;
     background-color: #121212;
