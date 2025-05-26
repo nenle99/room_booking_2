@@ -1,9 +1,16 @@
 <script>
 	import { user } from '$lib/stores/user';
   import { enhance } from '$app/forms';
+  import { goto } from '$app/navigation';
 	export let data;
 
 	let showMyBookings = false;
+
+	function logout() {
+		localStorage.removeItem('user');
+		user.set(null);
+		goto('/');
+	}
 
 	// Gibt alle Buchungen für einen Raum zurück
 	function getBookingsForRoom(roomId) {
@@ -16,15 +23,6 @@
 		return bookingsToday.length === 0;
 	}
 
-	function enhanceDeleteBooking({ result }) {
-		result.then((res) => {
-			if (res.type === 'success') {
-				const form = res.form;
-				const deletedId = form?.get('booking_id');
-				data.bookings = data.bookings.filter(b => b._id !== deletedId);
-			}
-		});
-	}
 
 	// Buchungen des Nutzers mit Raum-Details
 	$: myBookings = data.bookings
@@ -51,9 +49,12 @@
 	<div class="header">
 		<h1>Verfügbare Räume</h1>
 		{#if $user.name}
-			<button on:click={() => showMyBookings = !showMyBookings}>
-				{showMyBookings ? 'Meine Buchungen ausblenden' : 'Meine Buchungen anzeigen'}
-			</button>
+			<div>
+				<button on:click={() => showMyBookings = !showMyBookings}>
+					{showMyBookings ? 'Meine Buchungen ausblenden' : 'Meine Buchungen anzeigen'}
+				</button>
+				<button on:click={logout} class="logout-button">Logout</button>
+			</div>
 		{/if}
 	</div>
 
@@ -70,10 +71,10 @@
 							<strong>{b.room.name}</strong>
 							({b.room.location}, {b.room.capacity} Personen)
 
-							<form method="POST" action="/api/bookings/delete" style="display:inline;">
-	            <input type="hidden" name="booking_id" value={b._id} />
-	            <button type="submit" class="delete-button">Löschen</button>
-              </form>
+							<form method="POST" action="/api/bookings/delete" on:submit={() => setTimeout(() => location.reload(), 100)} style="display:inline;">
+							<input type="hidden" name="booking_id" value={b._id} />
+							<button type="submit" class="delete-button">Löschen</button>
+							</form>
 						</li>
 					{/each}
 				</ul>
@@ -182,5 +183,19 @@
 
 	.delete-button:hover {
 		background-color: #c62828;
+	}
+
+	.logout-button {
+		margin-left: 0.5rem;
+		background-color: #444;
+		color: white;
+		border: none;
+		padding: 0.5rem 1rem;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+
+	.logout-button:hover {
+		background-color: #666;
 	}
 </style>

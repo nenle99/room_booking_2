@@ -84,9 +84,6 @@
 <style>
 	.wrapper {
 		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: center;
 		min-height: 100vh;
 		padding: 2rem;
 		background-color: #121212;
@@ -100,7 +97,10 @@
 		box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 		max-width: 400px;
 		width: 100%;
-		position: relative;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 	.room-image {
